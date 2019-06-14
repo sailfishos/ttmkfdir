@@ -1,7 +1,10 @@
-* Wed Sep 23 2009 Li Peng <peng.li@intel.com> - 3.0.9
+* Fri Jun 14 2019 Niels Breet <niels.breet@jolla.com> - 3.0.9-33
+- [ttmkfdir] Fix build error caused by newer freetype2. Contributes to JB#45859
+
+* Wed Sep 23 2009 Li Peng <peng.li@intel.com> - 3.0.9-32
 - Fix build error
 
-* Sat Aug 22 2009 Anas Nashif <anas.nashif@intel.com> - 3.0.9
+* Sat Aug 22 2009 Anas Nashif <anas.nashif@intel.com> - 3.0.9-32
 - Cleanup spec file
 
 * Wed Feb 27 2008 Lingning Zhang <lizhang@redhat.com> - 3.0.9-26
