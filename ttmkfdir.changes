@@ -1,3 +1,7 @@
+* Thu Apr 02 2026 Matti Viljanen <matti.viljanen@jolla.com> - 3.0.9-33
+- Fix deprecated %patch usage. JB#62519
+- Fix more compiler warnings
+
 * Wed Sep 23 2009 Li Peng <peng.li@intel.com> - 3.0.9
 - Fix build error
 

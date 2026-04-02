@@ -1,7 +1,7 @@
 Summary: Utility to create fonts.scale files for truetype fonts
 Name:    ttmkfdir
 Version: 3.0.9
-Release: 1
+Release: 33
 URL:     https://github.com/sailfishos/ttmkfdir.git 
 Source0: %{name}-%{version}.tar.bz2
 
