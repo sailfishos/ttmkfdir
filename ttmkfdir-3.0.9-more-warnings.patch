@@ -1,0 +1,71 @@
+diff --git a/encoding.cpp b/encoding.cpp
+index 47cae6e..8001a50 100644
+--- a/encoding.cpp
++++ b/encoding.cpp
+@@ -17,7 +17,7 @@ namespace {
+ 	static char base[PATH_MAX] = {0,};
+ 
+ 	if (!base[0]) {
+-	    strncpy (base, string(cmdline::instance()->option ("encoding")).c_str (), sizeof (base));
++	    strncpy (base, string(cmdline::instance()->option ("encoding")).c_str (), sizeof (base) - 1);
+ 	    char *p = strrchr (base, '/');
+ 
+ 	    if (p)
+@@ -38,7 +38,7 @@ namespace {
+ 	char inbuf[300000];
+ 	FILE *od;
+ 	gzFile fd;
+-	int rvalue, tmpfd;
++	int tmpfd;
+ 
+ 	if (fgets (line_buf, sizeof(line_buf), f) != NULL) {
+ 
+@@ -55,7 +55,7 @@ namespace {
+ 	    bzero(inbuf, sizeof(inbuf));
+ 
+ 	    fd = gzopen (name,"rb");
+-	    rvalue = gzread (fd, inbuf, sizeof(inbuf));
++	    gzread (fd, inbuf, sizeof(inbuf));
+ 
+ 	    tmpfd = mkstemp (tmp_file_name);
+ 	    if (tmpfd == -1) {
+diff --git a/ttf.cpp b/ttf.cpp
+index fbdfe04..d2d933c 100644
+--- a/ttf.cpp
++++ b/ttf.cpp
+@@ -63,7 +63,7 @@ Face::MappingPresent (int cmapidx, NumericMapping *m, int enc_size, int start_co
+     if (enc_size <= 256) {
+         return (missing <= int (cmdline::instance()->option ("max-missing")));
+     } else {
+-        return ((100 * missing/enc_size) <= int (cmdline::instance()->option ("max-missing-percentage")) & enc_comp);
++        return (((100 * missing/enc_size) <= int (cmdline::instance()->option ("max-missing-percentage"))) & enc_comp);
+     }
+ }
+ 
+@@ -491,7 +491,7 @@ Face::FoundryName (void) const
+ const char *
+ Face::PanoseWeight (void) const
+ {
+-    static char *panose_weight_latin[] = {
++    static const char *panose_weight_latin[] = {
+ 	"any",
+ 	"no fit",
+ 	"very light",
+@@ -556,7 +556,7 @@ Face::Weight (void) const
+ const char *
+ Face::PanoseWidth (void) const
+ {
+-    static char *panose_spacing_latin_text [] = {
++    static const char *panose_spacing_latin_text [] = {
+ 	"any",
+ 	"no fit",
+ 	"old style",
+@@ -569,7 +569,7 @@ Face::PanoseWidth (void) const
+ 	"monospaced",
+     };
+     
+-    static char *panose_spacing_latin_decorative [] = {
++    static const char *panose_spacing_latin_decorative [] = {
+ 	"any",
+ 	"no fit",
+ 	"super condensed",
